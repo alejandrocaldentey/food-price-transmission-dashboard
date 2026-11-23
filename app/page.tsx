@@ -121,8 +121,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ c
         <p>
           Sources: Eurostat (apri_pi_outa, prc_hicp_aind) and World Bank (FP.CPI.TOTL.ZG), reused with attribution.
           {lastPublish && ` Last published ${new Date(lastPublish.published_at).toISOString().slice(0, 10)}.`} Built by{" "}
-          <a href="https://www.linkedin.com/in/alejandro-caldentey-datalethia/">Alejandro Caldentey</a> with AI
-          assistance.
+          <a href="https://www.linkedin.com/in/alejandro-caldentey-datalethia/">Alejandro Caldentey</a>.
         </p>
       </footer>
     </main>

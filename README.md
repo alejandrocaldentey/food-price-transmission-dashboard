@@ -43,4 +43,4 @@ Eurostat (`apri_pi_outa`, `prc_hicp_aind`) and World Bank (`FP.CPI.TOTL.ZG`), re
 
 ---
 
-Architecture, decisions and review by [Alejandro Caldentey](https://github.com/alejandrocaldentey). Built with AI assistance.
+Designed and built by [Alejandro Caldentey](https://github.com/alejandrocaldentey).
