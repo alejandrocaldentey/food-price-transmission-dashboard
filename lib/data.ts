@@ -30,8 +30,9 @@ export type PublishLog = { published_at: string; git_sha: string | null; source_
 
 async function get<T>(path: string): Promise<T> {
   const res = await fetch(`${URL}/rest/v1/${path}`, {
-    headers: { apikey: KEY, Authorization: `Bearer ${KEY}` },
-    next: { revalidate: 3600 },
+    headers: { apikey: KEY, Authorization: `Bearer ${KEY}`, "Accept-Profile": "public" },
+    // Data is published weekly; 15 minutes keeps the page fresh after a publish and the free tiers idle.
+    next: { revalidate: 900 },
   });
   if (!res.ok) throw new Error(`Supabase ${path}: ${res.status}`);
   return res.json() as Promise<T>;

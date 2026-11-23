@@ -13,7 +13,7 @@ flowchart LR
         P --> D[(Diamond<br/>generated from metric catalogue)]
     end
     D -- GitHub Actions, weekly upsert<br/>service role --> S[(Supabase Postgres<br/>RLS: SELECT only)]
-    S -- publishable key, read-only --> V[Next.js on Vercel<br/>server components, 1 h cache]
+    S -- publishable key, read-only --> V[Next.js on Vercel<br/>server components, 15 min cache]
 ```
 
 | Decision | Why |
@@ -21,7 +21,7 @@ flowchart LR
 | Server components fetch Supabase over REST | The key stays on the server; pages are shareable by URL (`/?country=ESP`) |
 | Publishable key + RLS `SELECT` only | The database can be read by anyone and written by no one but CI |
 | Labels, units and descriptions come from `food_price_metric` | The dashboard shows the same definitions as Power BI and the metric catalogue |
-| 1-hour revalidation | Data changes weekly; the page stays fast and the free tiers stay idle |
+| 15-minute revalidation | Data changes weekly; new data shows up within 15 minutes of a publish and the free tiers stay idle |
 
 The full reasoning is in [ADR 0008](https://github.com/alejandrocaldentey/fabric-lakehouse-food-prices/blob/main/docs/adr/0008-public-demo-supabase-vercel.md) of the lakehouse repo.
 
