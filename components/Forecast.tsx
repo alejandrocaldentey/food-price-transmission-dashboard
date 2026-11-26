@@ -246,7 +246,7 @@ export function Forecast({ countries, diamond, models, backtest, forecast, coef,
                 <span className="sev" style={{ color: "var(--accent)" }}>
                   <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
                     <circle cx="7" cy="7" r="6" fill="currentColor" />
-                    <path d="M4 7.2 L6.2 9.3 L10 5" stroke="var(--panel)" strokeWidth="1.6" fill="none" />
+                    <path d="M4 7.2 L6.2 9.3 L10 5" stroke="var(--bg)" strokeWidth="1.6" fill="none" />
                   </svg>
                   Matches the pipeline&apos;s published forecast ({pct(base?.published, 2)})
                 </span>

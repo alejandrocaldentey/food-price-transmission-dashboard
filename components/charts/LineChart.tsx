@@ -150,7 +150,7 @@ export function LineChart({ years, series, band, height = 340, format, yTitle, z
               Object.entries(s.values)
                 .filter(([, v]) => v !== null && v !== undefined)
                 .map(([t, v]) => (
-                  <circle key={s.id + t} cx={x(+t)} cy={y(v as number)} r={4.5} fill={s.color} stroke="var(--panel)" strokeWidth={2} />
+                  <circle key={s.id + t} cx={x(+t)} cy={y(v as number)} r={4.5} fill={s.color} stroke="var(--bg)" strokeWidth={2} />
                 )),
             )}
           {ends.map((e) => (
@@ -164,7 +164,7 @@ export function LineChart({ years, series, band, height = 340, format, yTitle, z
               {series.map((s) => {
                 const v = s.values[hover];
                 return v === null || v === undefined ? null : (
-                  <circle key={s.id} cx={x(hover)} cy={y(v)} r={4.5} fill={s.color} stroke="var(--panel)" strokeWidth={2} />
+                  <circle key={s.id} cx={x(hover)} cy={y(v)} r={4.5} fill={s.color} stroke="var(--bg)" strokeWidth={2} />
                 );
               })}
             </g>

@@ -134,7 +134,7 @@ export type Alert = {
 };
 
 export type Role = { role_id: string; label: string; focus: string; sort_order: number };
-export type Play = { rule_id: string; role_id: string; business: string; data: string; kpi: string; horizon: string };
+export type Play = { rule_id: string; role_id: string; question: string; data: string; kpi: string; horizon: string; exposure: "cost" | "price" | "volume" | "trust" };
 
 export type Lineage = { edges: Record<string, string[]>; layers: Record<string, string>; contracts: string[] };
 export type Contract = {
@@ -226,7 +226,7 @@ export async function loadDecisions(runId: string) {
     get<AlertRule>(`food_price_alert_rule?select=*&${run(runId)}&order=sort_order`),
     get<Alert>(`food_price_alert?select=alert_id,rule_id,category,country_iso3,year,severity,value&${run(runId)}`),
     get<Role>(`food_price_role?select=role_id,label,focus,sort_order&${run(runId)}&order=sort_order`),
-    get<Play>(`food_price_play?select=rule_id,role_id,business,data,kpi,horizon&${run(runId)}`),
+    get<Play>(`food_price_play?select=rule_id,role_id,question,data,kpi,horizon,exposure&${run(runId)}`),
   ]);
   return { rules, alerts, roles, plays };
 }

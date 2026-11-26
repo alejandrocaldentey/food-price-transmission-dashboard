@@ -58,7 +58,7 @@ export function Decisions({ countries, rules, alerts, roles, plays, models }: Pr
           <AutoSelect label="Year" value={year} onChange={(v) => setYear(Number(v))} options={[...new Set(marketYears)].sort((a, b) => b - a).map((y) => ({ value: y, label: String(y) }))} />, for{" "}
           <AutoSelect label="Role" value={role} onChange={setRole} options={roles.map((r) => ({ value: r.role_id, label: asRole(r.label) }))} />.
         </h1>
-        <p className="subline">{roleObj?.focus} Each signal below pairs a business decision with the data work that makes it repeatable.</p>
+        <p className="subline">{roleObj?.focus} Each signal below poses the business question it forces and the data work that answers it. The decision stays with the business owner; the data team owns the evidence.</p>
       </section>
 
       <section className="wrap">
@@ -138,11 +138,11 @@ export function Decisions({ countries, rules, alerts, roles, plays, models }: Pr
                       {play ? (
                         <>
                           <div>
-                            <h4>Business decision</h4>
-                            <p>{play.business}</p>
+                            <h4>Business question</h4>
+                            <p>{play.question}</p>
                           </div>
                           <div>
-                            <h4>Data work that supports it</h4>
+                            <h4>Data work that answers it</h4>
                             <p>{play.data}</p>
                           </div>
                           <div>
@@ -150,8 +150,10 @@ export function Decisions({ countries, rules, alerts, roles, plays, models }: Pr
                             <p>{play.kpi}</p>
                           </div>
                           <div>
-                            <h4>Horizon</h4>
-                            <p>{play.horizon}</p>
+                            <h4>Horizon and exposure</h4>
+                            <p>
+                              {play.horizon}, {play.exposure === "trust" ? "trust in the numbers" : `${play.exposure} line`}
+                            </p>
                           </div>
                         </>
                       ) : (
